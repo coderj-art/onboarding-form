@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Onboarding Form | Beyond Seven</title>
+  <meta name="description" content="Complete your onboarding to get started with our AI-powered email marketing system." />
+  <meta name="author" content="Beyond Seven" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1D2124;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .logo-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .logo-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #DBFF00;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .logo-text {
+      color: #ffffff;
+    }
+
+    .logo-accent {
+      color: #DBFF00;
+    }
+
+    .form-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      color: #9CA3AF;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 1.5rem auto 0 auto;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background-color: #ffffff;
+      border-radius: 3px;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: #DBFF00;
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .form-card {
+      background: linear-gradient(135deg, #000000 0%, #0A0A0A 100%);
+      border-radius: 1rem;
+      padding: 2rem;
+      border: 1px solid #374151;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .form-section {
+      border-bottom: 1px solid #ffffff;
+      padding-bottom: 2rem;
+    }
+
+    .form-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #DBFF00;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-icon {
+      font-size: 1.125rem;
+    }
+
+    .field-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .field-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      display: block;
+    }
+
+    .field-input {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      border: 2px solid #E5E7EB;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      color: #000;
+      font-size: 1rem;
+      width: 100%;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .field-input:focus {
+      border-color: #DBFF00;
+      box-shadow: 0 0 0 3px rgba(219, 255, 0, 0.1);
+    }
+
+    .field-input.error {
+      border-color: #EF4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .field-input::placeholder {
+      color: #6B7280;
+    }
+
+    .field-textarea {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      border: 2px solid #E5E7EB;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      color: #000;
+      font-size: 1rem;
+      width: 100%;
+      outline: none;
+      resize: vertical;
+      min-height: 120px;
+      transition: all 0.2s;
+    }
+
+    .field-textarea:focus {
+      border-color: #DBFF00;
+      box-shadow: 0 0 0 3px rgba(219, 255, 0, 0.1);
+    }
+
+    .field-textarea.error {
+      border-color: #EF4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .field-textarea::placeholder {
+      color: #6B7280;
+    }
+
+    .file-upload {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .file-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background-color: #ffffff;
+      border: 2px dashed #D1D5DB;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      color: #6B7280;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .file-label:hover {
+      border-color: #DBFF00;
+      background-color: #F9FAFB;
+    }
+
+    .file-label.dragover {
+      border-color: #DBFF00;
+      background-color: rgba(219, 255, 0, 0.05);
+    }
+
+    .file-icon {
+      font-size: 1.5rem;
+      color: #9CA3AF;
+    }
+
+    .file-list {
+      margin-top: 1rem;
+    }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: between;
+      gap: 0.75rem;
+      background-color: #F3F4F6;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      color: #374151;
+      font-size: 0.875rem;
+    }
+
+    .file-name {
+      flex: 1;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+    }
+
+    .file-size {
+      color: #6B7280;
+      font-size: 0.75rem;
+    }
+
+    .file-remove {
+      background: none;
+      border: none;
+      color: #EF4444;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+    }
+
+    .file-remove:hover {
+      background-color: #FEE2E2;
+    }
+
+    .error-message {
+      font-family: 'Montserrat', sans-serif;
+      color: #EF4444;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #DBFF00 0%, #B8E000 100%);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      border: none;
+      border-radius: 0.75rem;
+      padding: 1.25rem 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      transform: scale(1);
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px rgba(219, 255, 0, 0.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: scale(1);
+    }
+
+    .success-message {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      display: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ffffff;
+    }
+
+    .footer-text {
+      font-family: 'Montserrat', sans-serif;
+      color: #9CA3AF;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-link {
+      color: #DBFF00;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #B8E000;
+    }
+
+    .powered-by {
+      font-family: 'Montserrat', sans-serif;
+      color: #6B7280;
+      font-size: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .form-title {
+        font-size: 1.5rem;
+      }
+      
+      .logo-content {
+        font-size: 1.5rem;
+      }
+      
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0,0,0,.3);
+      border-radius: 50%;
+      border-top-color: #000;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-content">
+        <img src="beyond-seven-logo.png" alt="Beyond Seven - Profitable Inbox Engine" style="height: 150px; width: auto;" />
+      </div>
+      <h1 class="form-title">Welcome to the Profitable Inbox Engine!</h1>
+      <p class="form-subtitle">
+        Thank you for your purchase. Please complete this onboarding form so we can set up your AI-powered email marketing system. 
+        <br><br>
+        This information helps us understand your business and create personalized email campaigns that convert.
+      </p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+      <h3 style="margin-bottom: 0.5rem;">Thank you!</h3>
+      <p>Your onboarding form has been submitted successfully. Our AI system is now analyzing your business information to create personalized email marketing campaigns. You'll receive your first campaign strategies within 24 hours.</p>
+    </div>
+
+    <!-- Form Card -->
+    <div class="form-card">
+      <form id="onboardingForm" class="form">
+        
+        <!-- Personal Information Section -->
+        <div class="form-section">
+          <h2 class="section-title">
+            Personal Information
+          </h2>
+          
+          <div class="field-row">
+            <div class="field-group">
+              <label for="firstName" class="field-label">First Name*</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="field-input"
+                placeholder="Enter your first name"
+                required
+              />
+              <div id="firstNameError" class="error-message"></div>
+            </div>
+
+            <div class="field-group">
+              <label for="lastName" class="field-label">Last Name*</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                class="field-input"
+                placeholder="Enter your last name"
+                required
+              />
+              <div id="lastNameError" class="error-message"></div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="email" class="field-label">Email Address*</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="field-input"
+              placeholder="Enter your email address"
+              required
+            />
+            <div id="emailError" class="error-message"></div>
+          </div>
+        </div>
+
+        <!-- Business Information Section -->
+        <div class="form-section">
+          <h2 class="section-title">
+            Your Business
+          </h2>
+          
+          <div class="field-group">
+            <label for="businessDescription" class="field-label">Business Description*</label>
+            <textarea
+              id="businessDescription"
+              name="businessDescription"
+              class="field-textarea"
+              placeholder="Tell us about your business, what you do, your target audience, and your current email marketing challenges. What type of email campaigns do you want to create? The more detail you provide, the better our AI can personalize your marketing strategy."
+              required
+            ></textarea>
+            <div id="businessDescriptionError" class="error-message"></div>
+          </div>
+        </div>
+
+        <!-- Social & Web Presence Section -->
+        <div class="form-section">
+          <h2 class="section-title">
+            Your Online Presence
+          </h2>
+          
+          <div class="field-group">
+            <label for="linkedinUrl" class="field-label">LinkedIn URL</label>
+            <input
+              type="url"
+              id="linkedinUrl"
+              name="linkedinUrl"
+              class="field-input"
+              placeholder="https://linkedin.com/in/yourprofile"
+            />
+            <div id="linkedinUrlError" class="error-message"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="instagramUrl" class="field-label">Instagram URL</label>
+            <input
+              type="url"
+              id="instagramUrl"
+              name="instagramUrl"
+              class="field-input"
+              placeholder="https://instagram.com/yourprofile"
+            />
+            <div id="instagramUrlError" class="error-message"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="websiteUrl" class="field-label">Website URL</label>
+            <input
+              type="url"
+              id="websiteUrl"
+              name="websiteUrl"
+              class="field-input"
+              placeholder="https://yourwebsite.com"
+            />
+            <div id="websiteUrlError" class="error-message"></div>
+          </div>
+
+          <div class="field-group">
+            <label for="youtubeUrl" class="field-label">YouTube URL</label>
+            <input
+              type="url"
+              id="youtubeUrl"
+              name="youtubeUrl"
+              class="field-input"
+              placeholder="https://youtube.com/c/yourchannel"
+            />
+            <div id="youtubeUrlError" class="error-message"></div>
+          </div>
+        </div>
+
+        <!-- File Attachments Section -->
+        <div class="form-section">
+          <h2 class="section-title">
+            Supporting Documents
+          </h2>
+          
+          <div class="field-group">
+            <label for="attachments" class="field-label">
+              Attachments
+              <span style="color: #9CA3AF; font-weight: normal;">(Optional - Brand assets, existing email templates, customer data, etc.)</span>
+            </label>
+            <div class="file-upload">
+              <input
+                type="file"
+                id="attachments"
+                name="attachments"
+                class="file-input"
+                multiple
+                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.gif,.zip,.rar"
+              />
+              <label for="attachments" class="file-label" id="fileLabel">
+                <div>
+                  <div style="font-weight: 600; margin-bottom: 0.25rem;">Click to upload files</div>
+                  <div style="font-size: 0.875rem;">or drag and drop</div>
+                  <div style="font-size: 0.75rem; color: #9CA3AF; margin-top: 0.25rem;">
+                    Brand assets, email templates, customer lists (Max 10 files, 50MB total)
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div id="fileList" class="file-list"></div>
+            <div id="attachmentsError" class="error-message"></div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="submit-btn">
+          Complete Onboarding
+        </button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-text">
+        Need help? <a href="mailto:support@beyondseven.com" class="footer-link">Contact Support</a>
+      </div>
+      <div class="footer-text">
+        Questions about your campaigns? <a href="#" class="footer-link">Schedule a Call</a>
+      </div>
+      <div class="powered-by">
+        POWERED BY Beyond Seven
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Form elements
+    const form = document.getElementById('onboardingForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const progressFill = document.getElementById('progressFill');
+    const fileInput = document.getElementById('attachments');
+    const fileLabel = document.getElementById('fileLabel');
+    const fileList = document.getElementById('fileList');
+    
+    let uploadedFiles = [];
+
+    // Progress tracking
+    function updateProgress() {
+      const requiredFields = ['firstName', 'lastName', 'email', 'businessDescription'];
+      const filledFields = requiredFields.filter(fieldName => {
+        const field = document.getElementById(fieldName);
+        return field.value.trim() !== '';
+      });
+      
+      const progress = (filledFields.length / requiredFields.length) * 100;
+      progressFill.style.width = progress + '%';
+    }
+
+    // Add progress listeners to required fields
+    ['firstName', 'lastName', 'email', 'businessDescription'].forEach(fieldName => {
+      const field = document.getElementById(fieldName);
+      field.addEventListener('input', updateProgress);
+    });
+
+    // File upload handling
+    fileInput.addEventListener('change', handleFileSelect);
+    
+    // Drag and drop
+    fileLabel.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileLabel.classList.add('dragover');
+    });
+
+    fileLabel.addEventListener('dragleave', () => {
+      fileLabel.classList.remove('dragover');
+    });
+
+    fileLabel.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileLabel.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer.files);
+      handleFiles(files);
+    });
+
+    function handleFileSelect(e) {
+      const files = Array.from(e.target.files);
+      handleFiles(files);
+    }
+
+    function handleFiles(files) {
+      files.forEach(file => {
+        // Check file count limit (10 files max)
+        if (uploadedFiles.length >= 10) {
+          showError('attachments', 'Maximum 10 files allowed. Please remove some files before adding more.');
+          return;
+        }
+        
+        // Check total size limit (50MB total)
+        const currentTotalSize = uploadedFiles.reduce((total, f) => total + f.size, 0);
+        if (currentTotalSize + file.size > 50 * 1024 * 1024) {
+          showError('attachments', `Adding "${file.name}" would exceed the 50MB total limit. Current total: ${formatFileSize(currentTotalSize)}`);
+          return;
+        }
+        
+        // Add to uploaded files array
+        uploadedFiles.push(file);
+      });
+      
+      updateFileList();
+      clearError('attachments');
+    }
+
+    function updateFileList() {
+      fileList.innerHTML = '';
+      uploadedFiles.forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `
+          <span class="file-name">${file.name}</span>
+          <span class="file-size">${formatFileSize(file.size)}</span>
+          <button type="button" class="file-remove" onclick="removeFile(${index})">✕</button>
+        `;
+        fileList.appendChild(fileItem);
+      });
+    }
+
+    function removeFile(index) {
+      uploadedFiles.splice(index, 1);
+      updateFileList();
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // URL validation
+    function isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    // Error handling
+    function showError(fieldName, message) {
+      const errorElement = document.getElementById(fieldName + 'Error');
+      const fieldElement = document.getElementById(fieldName);
+      
+      if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+      }
+      
+      if (fieldElement) {
+        fieldElement.classList.add('error');
+      }
+    }
+
+    function clearError(fieldName) {
+      const errorElement = document.getElementById(fieldName + 'Error');
+      const fieldElement = document.getElementById(fieldName);
+      
+      if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+      }
+      
+      if (fieldElement) {
+        fieldElement.classList.remove('error');
+      }
+    }
+
+    // Form validation
+    function validateForm() {
+      let isValid = true;
+      const formData = new FormData(form);
+      
+      // Clear previous errors
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.style.display = 'none';
+      });
+      document.querySelectorAll('.field-input, .field-textarea').forEach(el => {
+        el.classList.remove('error');
+      });
+
+      // Validate required fields
+      const requiredFields = [
+        { name: 'firstName', label: 'First name' },
+        { name: 'lastName', label: 'Last name' },
+        { name: 'email', label: 'Email address' },
+        { name: 'businessDescription', label: 'Business description' }
+      ];
+
+      requiredFields.forEach(field => {
+        const value = formData.get(field.name)?.trim();
+        if (!value) {
+          showError(field.name, `${field.label} is required`);
+          isValid = false;
+        }
+      });
+
+      // Validate email format
+      const email = formData.get('email')?.trim();
+      if (email && !/\S+@\S+\.\S+/.test(email)) {
+        showError('email', 'Please enter a valid email address');
+        isValid = false;
+      }
+
+      // Validate URLs
+      const urlFields = ['linkedinUrl', 'instagramUrl', 'websiteUrl', 'youtubeUrl'];
+      urlFields.forEach(fieldName => {
+        const value = formData.get(fieldName)?.trim();
+        if (value && !isValidUrl(value)) {
+          showError(fieldName, 'Please enter a valid URL (include http:// or https://)');
+          isValid = false;
+        }
+      });
+
+      return isValid;
+    }
+
+    // Form submission
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      if (!validateForm()) {
+        // Scroll to first error
+        const firstError = document.querySelector('.error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      // Disable submit button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading"></span> Processing files and submitting...';
+
+      try {
+        const formData = new FormData(form);
+        
+        // Convert FormData to object
+        const formObject = {};
+        for (let [key, value] of formData.entries()) {
+          formObject[key] = value;
+        }
+        
+        // Convert files to base64
+        const filePromises = uploadedFiles.map(async (file) => {
+          return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              resolve({
+                name: file.name,
+                size: file.size,
+                type: file.type,
+                lastModified: file.lastModified,
+                content: e.target.result // This includes the data:mime/type;base64, prefix
+              });
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+        
+        console.log('Converting files to base64...');
+        const filesWithContent = await Promise.all(filePromises);
+        
+        console.log('Form Data:', formObject);
+        console.log('Files with content ready:', filesWithContent.length);
+        
+        // n8n webhook URL
+        const webhookUrl = 'https://primary-production-ffa5b.up.railway.app/webhook-test/5725f3f8-5e78-488a-969b-44120634d48a';
+        
+        // Send to n8n webhook with actual file content
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formObject,
+            files: filesWithContent,
+            metadata: {
+              submittedAt: new Date().toISOString(),
+              fileCount: uploadedFiles.length,
+              userAgent: navigator.userAgent,
+              formVersion: '2.0'
+            }
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('n8n response:', result);
+        
+        // Show success message
+        successMessage.style.display = 'block';
+        form.style.display = 'none';
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+        
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('Sorry, there was an error submitting your form. Please try again or contact support.');
+        
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Complete Onboarding';
+      }
+    });
+
+    // Initialize progress
+    updateProgress();
+  </script>
+</body>
+</html>
