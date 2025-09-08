@@ -873,8 +873,8 @@
         console.log('Form Data:', formObject);
         console.log('Files with content ready:', filesWithContent.length);
         
-        // n8n webhook URL
-        const webhookUrl = 'https://primary-production-ffa5b.up.railway.app/webhook-test/9b33e870-2bb0-4c9e-a307-cf3398e8d281';
+        // Netlify function that proxies to n8n webhook
+        const webhookUrl = '/.netlify/functions/submit-form';
         
         // Send to n8n webhook with actual file content
         const response = await fetch(webhookUrl, {
